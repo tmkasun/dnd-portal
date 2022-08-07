@@ -38,7 +38,7 @@ tr:nth-child(odd) td {
 
 .loading-row {
   display: flex;
-  flex-grow: 1;
+  height: 460px;
   justify-content: center;
   align-items: center;
 }
