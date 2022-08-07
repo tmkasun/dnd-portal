@@ -3,7 +3,9 @@ import { ISpellByClass } from "../data/types/ISpellByClass";
 import { ISpellDetails } from "../data/types/ISpellDetails";
 
 export const useSpellByClass = (
-  spellClass: string
+  spellClass: string,
+  page: number,
+  limit: number
 ): [ISpellByClass | null, boolean, unknown | null] => {
   const [data, setData] = useState<ISpellByClass | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +21,8 @@ export const useSpellByClass = (
           throw new Error("Error while retriving the data!");
         }
         const data = await response.json();
-        setData(data);
+        const fakePaginatedData = { ...data, results: data.results.slice((page - 1) * limit, (page) * limit) }
+        setData(fakePaginatedData);
       } catch (error) {
         alert("Network error or CORS misconfiguration issue!");
         setError(error);
@@ -28,7 +31,7 @@ export const useSpellByClass = (
         setIsLoading(false);
       }
     })();
-  }, [spellClass]);
+  }, [spellClass, page, limit]);
   return [data, isLoading, error];
 };
 

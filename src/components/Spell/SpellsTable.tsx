@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useSpellByClass } from "../../data/hooks";
@@ -9,9 +10,17 @@ type SpellsTableProps = {
   spellClass: string;
 };
 export const SpellsTable = ({ spellClass }: SpellsTableProps) => {
-  const [data, isLoading, errors] = useSpellByClass(spellClass);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+
+  const [data, isLoading, errors] = useSpellByClass(spellClass, page, limit);
   const ratings = useRatings();
   const updateRating = useUpdateRating();
+
+  useEffect(() => {
+    setPage(1);
+    setLimit(10);
+  }, [spellClass])
   return (
     <div className="spells-listing">
       <>
@@ -53,6 +62,15 @@ export const SpellsTable = ({ spellClass }: SpellsTableProps) => {
           <div className="loading-row data-error">
             Error while fetching the <b className="bold-name">{spellClass}</b>{" "}
             data!
+          </div>
+        )}
+        {data && data.count >= 10 && (
+          <div className="pagination-section">
+            <div>Current page: {page} / {Math.ceil(data.count / limit)}</div>
+            <nav>
+              <button onClick={() => page < Math.ceil(data.count / limit) && setPage(page + 1)}>Next</button>
+              <button onClick={() => page > 1 && setPage(page - 1)}>previous</button>
+            </nav>
           </div>
         )}
       </>
