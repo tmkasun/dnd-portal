@@ -1,6 +1,9 @@
 import React from "react";
 import "./Main.css";
-export const MainLayout: React.FC = ({ children }) => {
+type MainLayoutProps = {
+  children: React.ReactNode;
+}
+export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return <main className="App">{children}</main>;
 };
 

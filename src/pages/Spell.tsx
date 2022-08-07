@@ -3,7 +3,7 @@ import MainLayout from "../components/Layouts/Main";
 import SpellDetails from "../components/Spell/SpellDetails";
 
 export const Spell = () => {
-  let { spellName } = useParams<{ spellName: string }>();
+  let { spellName="" } = useParams<{ spellName: string }>();
   return (
     <MainLayout>
       <SpellDetails spellName={spellName} />

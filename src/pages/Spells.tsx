@@ -7,11 +7,13 @@ export const Spells = () => {
   const [currentSpellClass, setCurrentSpellClass] = useState("bard");
   return (
     <MainLayout>
-      <SpellClasses
-        value={currentSpellClass}
-        onChange={(spellClass) => setCurrentSpellClass(spellClass)}
-      />
-      <SpellsTable spellClass={currentSpellClass} />
+      <>
+        <SpellClasses
+          value={currentSpellClass}
+          onChange={(spellClass) => setCurrentSpellClass(spellClass)}
+        />
+        <SpellsTable spellClass={currentSpellClass} />
+      </>
     </MainLayout>
   );
 };
