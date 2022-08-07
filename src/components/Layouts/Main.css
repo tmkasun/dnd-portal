@@ -1,0 +1,21 @@
+html {
+  font-family: sans-serif;
+}
+
+:root {
+  --common-b-radius: 8px;
+  --common-link-hover: rgba(126, 126, 223, 0.842);
+}
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}

@@ -1,0 +1,22 @@
+.spell-classes {
+  display: flex;
+  column-gap: 4px;
+  overflow-x: scroll;
+}
+
+.spell-class {
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: var(--common-b-radius);
+  min-width: 65px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.spell-class:hover {
+  background-color: var(--common-link-hover);
+}
+
+.selected-spell {
+  background-color: rgba(75, 75, 214, 0.342);
+}

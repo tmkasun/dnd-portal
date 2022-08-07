@@ -1,0 +1,21 @@
+.item-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* background-color: dodgerblue; */
+  padding: 8px;
+}
+
+.item-name {
+  width: 30%;
+  text-transform: capitalize;
+  border-right: 1px dotted black;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.item-value {
+  width: 70%;
+  text-align: center;
+  font-size: 1.2rem;
+}

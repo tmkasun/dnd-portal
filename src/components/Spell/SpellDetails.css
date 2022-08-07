@@ -1,0 +1,30 @@
+.spell-details-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+.spell-details-nav-bar {
+  display: flex;
+}
+
+.description-item {
+  text-align: left;
+  color: gray;
+}
+
+.spell-content {
+  border: 1px solid gray;
+  padding: 8px;
+  border-radius: var(--common-b-radius);
+}
+
+.back-link {
+  text-decoration: none;
+  border: 1px solid black;
+  padding: 8px;
+  border-radius: var(--common-b-radius);
+}
+
+.back-link:hover {
+  background-color: var(--common-link-hover);
+}
