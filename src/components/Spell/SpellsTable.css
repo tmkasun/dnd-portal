@@ -58,6 +58,7 @@ tr:nth-child(odd) td {
 .action-column {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .pagination-section {
