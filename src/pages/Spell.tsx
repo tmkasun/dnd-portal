@@ -3,10 +3,10 @@ import MainLayout from "../components/Layouts/Main";
 import SpellDetails from "../components/Spell/SpellDetails";
 
 export const Spell = () => {
-  let { spellName="" } = useParams<{ spellName: string }>();
+  let { spellIndex = "" } = useParams<{ spellIndex: string }>();
   return (
     <MainLayout>
-      <SpellDetails spellName={spellName} />
+      <SpellDetails spellIndex={spellIndex} />
     </MainLayout>
   );
 };

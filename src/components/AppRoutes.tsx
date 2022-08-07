@@ -11,7 +11,7 @@ export const AppRoutes = () => {
           <Route index element={<Spells />} />
           <Route path="spells">
             <Route index element={<Spells />} />
-            <Route path=":spellName" element={<Spell />} />
+            <Route path=":spellIndex" element={<Spell />} />
             <Route path="*" element={<SpellNotFound />} />
           </Route>
         </Route>

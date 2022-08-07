@@ -3,6 +3,7 @@
   flex-direction: column;
   row-gap: 32px;
 }
+
 .spell-details-nav-bar {
   display: flex;
 }
@@ -27,4 +28,9 @@
 
 .back-link:hover {
   background-color: var(--common-link-hover);
+}
+
+.spell-detail-head {
+  display: flex;
+  justify-content: center;
 }

@@ -1,7 +1,7 @@
 .spell-classes {
   display: flex;
   column-gap: 4px;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .spell-class {

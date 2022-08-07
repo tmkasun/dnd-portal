@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
 import { useSpellByClass } from "../../data/hooks";
+import { useRatings, useUpdateRating } from "../../data/Providers";
+import { Rating } from "../Rating";
 import "./SpellsTable.css";
 
 type SpellsTableProps = {
@@ -8,6 +10,8 @@ type SpellsTableProps = {
 };
 export const SpellsTable = ({ spellClass }: SpellsTableProps) => {
   const [data, isLoading, errors] = useSpellByClass(spellClass);
+  const ratings = useRatings();
+  const updateRating = useUpdateRating();
   return (
     <div className="spells-listing">
       <>
@@ -34,7 +38,7 @@ export const SpellsTable = ({ spellClass }: SpellsTableProps) => {
                       <Link to={`/spells/${spell.index}`} key={spell.name}>
                         View
                       </Link>
-                      <div>rate</div>
+                      <div><Rating rated={ratings[spell.index]} onClick={() => { updateRating(spell.index, !ratings[spell.index]) }} /></div>
                     </div>
                   </td>
                 </tr>

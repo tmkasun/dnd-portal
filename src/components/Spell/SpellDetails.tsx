@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import { useSpellDetails } from "../../data/hooks";
+import { useRatings } from "../../data/Providers";
+import Rating from "../Rating";
 import DetailRow from "./components/DetailRow";
 import "./SpellDetails.css";
 
 type SpellDetailsProps = {
-  spellName: string;
+  spellIndex: string;
 };
-export const SpellDetails = ({ spellName }: SpellDetailsProps) => {
-  const [data, isLoadig, error] = useSpellDetails(spellName);
+export const SpellDetails = ({ spellIndex }: SpellDetailsProps) => {
+  const [data, isLoadig, error] = useSpellDetails(spellIndex);
+  const ratings = useRatings();
+
   const name = data ? data.name : "Loading . . .";
   const desc = data ? data.desc : "Loading . . .";
   const casting_time = data ? data.casting_time : "Loading . . .";
@@ -23,9 +27,12 @@ export const SpellDetails = ({ spellName }: SpellDetailsProps) => {
       </nav>
       <div className="spell-content">
         <section>
-          <h2>{name}</h2>
+          <div className="spell-detail-head">
+            <h2>{name}</h2>
+            {ratings[spellIndex] && <Rating disabled rated={ratings[spellIndex]} />}
+          </div>
           {Array.isArray(desc) ? (
-            desc.map((item) => <p className="description-item">{item}</p>)
+            desc.map((item) => <p key={item} className="description-item">{item}</p>)
           ) : (
             <p className="description-item">{desc}</p>
           )}
@@ -37,7 +44,7 @@ export const SpellDetails = ({ spellName }: SpellDetailsProps) => {
             <input
               type="checkbox"
               aria-label="can be cast in a 10-min"
-              checked={ritual}
+              defaultChecked={ritual}
             />
           </DetailRow>
         </section>

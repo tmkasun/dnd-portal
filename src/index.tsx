@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import * as ReactDOMClient from "react-dom/client";
 
 import App from "./components/AppRoutes";
+import { RatingProvider } from "./data/Providers";
 
 const rootElement = document.getElementById("root");
 
@@ -10,7 +11,9 @@ if (rootElement) {
 
   root.render(
     <StrictMode>
-      <App />
+      <RatingProvider>
+        <App />
+      </RatingProvider>
     </StrictMode>
   );
 }

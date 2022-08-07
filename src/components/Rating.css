@@ -1,0 +1,23 @@
+.rating-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.rating-button:disabled {
+    cursor: default;
+}
+
+.active {
+    color: #18c700;
+}
+
+.inactive {
+    color: #393939;
+}
+
+.rating-button:hover {
+    color: #18c700;
+}
