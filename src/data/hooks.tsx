@@ -19,7 +19,7 @@ export const useSpellByClass = (
           throw new Error("Error while retriving the data!");
         }
         const data = await response.json();
-        setData(data as ISpellByClass);
+        setData(data);
       } catch (error) {
         alert("Network error or CORS misconfiguration issue!");
         setError(error);
@@ -50,7 +50,7 @@ export const useSpellDetails = (
             throw new Error("Error while retriving the data!");
           }
           const data = await response.json();
-          setData(data as ISpellDetails);
+          setData(data);
         } catch (error) {
           alert("Network error or CORS misconfiguration issue!");
           setError(error);
