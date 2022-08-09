@@ -1,6 +1,6 @@
 export const mockSpellByIndex = {
   index: 'sacred-flame',
-  name: 'Sacred Flame',
+  name: 'tmkasun mocked spell',
   url: '/api/spells/sacred-flame',
   attack_type: 'ranged',
   casting_time: '1 action',

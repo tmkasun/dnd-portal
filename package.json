@@ -40,9 +40,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom && npm run test:e2e",
     "eject": "react-scripts eject",
-    "lint": "eslint --quiet -c .eslintrc.js --ext .tsx,.ts src"
+    "lint": "eslint --quiet -c .eslintrc.js --ext .tsx,.ts src",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test:e2e": "start-server-and-test start http://localhost:3000 cy:run"
   },
   "browserslist": [
     ">0.2%",

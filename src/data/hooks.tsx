@@ -11,16 +11,21 @@ export const useSpellByClass = (
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<unknown | null>(null);
   useEffect(() => {
+    let isStale = false;
     setIsLoading(true);
+    setData(null);
     (async () => {
       try {
         const response = await fetch(
           `https://www.dnd5eapi.co/api/classes/${spellClass}/spells`
         );
         if (!response.ok) {
-          throw new Error('Error while retriving the data!');
+          throw new Error('Error while retrieving the data!');
         }
         const responseData = await response.json();
+        if (isStale) {
+          return;
+        }
         const fakePaginatedData = {
           ...responseData,
           results: responseData.results.slice((page - 1) * limit, page * limit),
@@ -29,9 +34,14 @@ export const useSpellByClass = (
       } catch (networkError) {
         setError(networkError);
       } finally {
-        setIsLoading(false);
+        if (!isStale) {
+          setIsLoading(false);
+        }
       }
     })();
+    return () => {
+      isStale = true;
+    };
   }, [spellClass, page, limit]);
   return [data, isLoading, error];
 };
@@ -51,7 +61,7 @@ export const useSpellDetails = (
             `https://www.dnd5eapi.co/api/spells/${spellIndex}`
           );
           if (!response.ok) {
-            throw new Error('Error while retriving the data!');
+            throw new Error('Error while retrieving the data!');
           }
           const spellData = await response.json();
           setData(spellData);

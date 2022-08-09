@@ -37,7 +37,11 @@ export function SpellsTable({ spellClass }: SpellsTableProps) {
             data.results.map((spell) => (
               <tr key={spell.index}>
                 <td>
-                  <Link to={`/spells/${spell.index}`} key={spell.name}>
+                  <Link
+                    data-testid={spell.index}
+                    to={`/spells/${spell.index}`}
+                    key={spell.name}
+                  >
                     {spell.name}
                   </Link>
                 </td>

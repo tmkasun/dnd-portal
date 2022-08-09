@@ -28,7 +28,7 @@ export function SpellDetails({ spellIndex }: SpellDetailsProps) {
       <div className="spell-content">
         <section>
           <div className="spell-detail-head">
-            <h2>{name}</h2>
+            <h2 data-testid="spell-name-header">{name}</h2>
             {ratings[spellIndex] && (
               <Rating disabled rated={ratings[spellIndex]} />
             )}
