@@ -1,4 +1,4 @@
-export const SpellNotFound = () => {
+export function SpellNotFound() {
   return (
     <main>
       <div>
@@ -6,6 +6,6 @@ export const SpellNotFound = () => {
       </div>
     </main>
   );
-};
+}
 
 export default SpellNotFound;

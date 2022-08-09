@@ -21,7 +21,7 @@ export interface ISpellDetails {
   // List of shorthand for required components of the spell. V: verbal S: somatic M: material
 
   // Allowed: V┃S┃M
-  material: "V" | "S" | "M";
+  material: 'V' | 'S' | 'M';
   // Material component for the spell to be cast.
 
   ritual: boolean;

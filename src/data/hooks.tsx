@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { ISpellByClass } from "../data/types/ISpellByClass";
-import { ISpellDetails } from "../data/types/ISpellDetails";
+import { useEffect, useState } from 'react';
+import { ISpellByClass } from './types/ISpellByClass';
+import { ISpellDetails } from './types/ISpellDetails';
 
 export const useSpellByClass = (
   spellClass: string,
@@ -18,15 +18,16 @@ export const useSpellByClass = (
           `https://www.dnd5eapi.co/api/classes/${spellClass}/spells`
         );
         if (!response.ok) {
-          throw new Error("Error while retriving the data!");
+          throw new Error('Error while retriving the data!');
         }
-        const data = await response.json();
-        const fakePaginatedData = { ...data, results: data.results.slice((page - 1) * limit, (page) * limit) }
+        const responseData = await response.json();
+        const fakePaginatedData = {
+          ...responseData,
+          results: responseData.results.slice((page - 1) * limit, page * limit),
+        };
         setData(fakePaginatedData);
-      } catch (error) {
-        alert("Network error or CORS misconfiguration issue!");
-        setError(error);
-        console.log(error);
+      } catch (networkError) {
+        setError(networkError);
       } finally {
         setIsLoading(false);
       }
@@ -50,14 +51,12 @@ export const useSpellDetails = (
             `https://www.dnd5eapi.co/api/spells/${spellIndex}`
           );
           if (!response.ok) {
-            throw new Error("Error while retriving the data!");
+            throw new Error('Error while retriving the data!');
           }
-          const data = await response.json();
-          setData(data);
-        } catch (error) {
-          alert("Network error or CORS misconfiguration issue!");
-          setError(error);
-          console.log(error);
+          const spellData = await response.json();
+          setData(spellData);
+        } catch (networkError) {
+          setError(networkError);
         } finally {
           setIsLoading(false);
         }

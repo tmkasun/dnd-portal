@@ -1,9 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Spells from "../pages/Spells";
-import Spell from "../pages/Spell";
-import SpellNotFound from "./Spell/SpellNotFound";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Spells from '../pages/Spells';
+import Spell from '../pages/Spell';
+import SpellNotFound from './Spell/SpellNotFound';
 
-export const AppRoutes = () => {
+export function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
@@ -18,5 +18,5 @@ export const AppRoutes = () => {
       </Routes>
     </BrowserRouter>
   );
-};
+}
 export default AppRoutes;

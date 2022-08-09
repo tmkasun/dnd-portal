@@ -1,31 +1,33 @@
-import "./SpellClasses.css";
+import './SpellClasses.css';
+
 const spellClasses = [
-  "bard",
-  "barbarian",
-  "cleric",
-  "druid",
-  "fighter",
-  "monk",
-  "paladin",
-  "ranger",
-  "rogue",
-  "sorcerer",
-  "warlock",
-  "wizard"
+  'bard',
+  'barbarian',
+  'cleric',
+  'druid',
+  'fighter',
+  'monk',
+  'paladin',
+  'ranger',
+  'rogue',
+  'sorcerer',
+  'warlock',
+  'wizard',
 ];
 type SpellClassesProps = {
   onChange: (spellClass: string) => void;
   value: string;
 };
-export const SpellClasses = ({ onChange, value }: SpellClassesProps) => {
+export function SpellClasses({ onChange, value }: SpellClassesProps) {
   return (
     <div className="spell-classes">
       {spellClasses.map((spellClass) => (
         <button
+          type="button"
           name={spellClass}
           onClick={(event) => onChange(event.currentTarget.name)}
           id={spellClass}
-          className={`spell-class ${value === spellClass && "selected-spell"}`}
+          className={`spell-class ${value === spellClass && 'selected-spell'}`}
           key={spellClass}
         >
           {spellClass}
@@ -33,6 +35,6 @@ export const SpellClasses = ({ onChange, value }: SpellClassesProps) => {
       ))}
     </div>
   );
-};
+}
 
 export default SpellClasses;
