@@ -13,6 +13,9 @@ This repository contains the source code for Dungeons & Dragons web portal.
 
 ## Getting started
 
+### Prerequisites
+Node.js (version 14 or above).
+
 ```bash
 $ git clone https://github.com/tmkasun/dnd-portal.git
 $ cd dnd-portal
