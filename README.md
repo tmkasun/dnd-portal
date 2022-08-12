@@ -14,7 +14,8 @@ This repository contains the source code for Dungeons & Dragons web portal.
 ## Getting started
 
 ### Prerequisites
-Node.js (version 14 or above).
+
+Node.js (version 16 or above).
 
 ```bash
 $ git clone https://github.com/tmkasun/dnd-portal.git
@@ -23,12 +24,38 @@ $ cd dnd-portal
 
 ## Running locally
 
+Run following command to install the dependencies.
+
+````bash
 ```bash
 $ npm ci
-```
+````
+
+and run the following command to start the application.
 
 ```bash
 $ npm start
+```
+
+## Running on container
+
+Run the following command to Build and tag the Docker image.
+
+```bash
+docker build -t dndportal:dev .
+```
+
+and then run the following command to run the application.
+
+```bash
+docker run \
+    -it \
+    --rm \
+    -v ${PWD}:/app \
+    -v /app/node_modules \
+    -p 3000:3000 \
+    -e CHOKIDAR_USEPOLLING=true \
+    dndportal:dev
 ```
 
 ## Tests
